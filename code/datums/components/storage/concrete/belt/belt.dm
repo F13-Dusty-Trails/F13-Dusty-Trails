@@ -217,6 +217,7 @@
 		/obj/item/crowbar/smithedunitool,
 		/obj/item/melee/smith/sword,
 		/obj/item/melee/smith/dagger,
+		/obj/item/kitchen/knife,
 		/obj/item/melee/smith/machete,
 		/obj/item/melee/smith/wakizashi,
 		/obj/item/melee/smith/mace,
@@ -247,6 +248,7 @@
 	can_hold_extra = typecacheof(list(
 		/obj/item/melee/smith/twohand/katana,
 		/obj/item/melee/smith/sword,
+		/obj/item/kitchen/knife,
 		/obj/item/melee/smith/dagger,
 		/obj/item/melee/smith/machete,
 		/obj/item/melee/smith/wakizashi,

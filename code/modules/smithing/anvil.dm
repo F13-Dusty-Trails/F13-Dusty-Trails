@@ -18,6 +18,7 @@
 #define RECIPE_SWORD "ffdf" // fold fold draw fold
 #define RECIPE_WAKI "fffd" //fold fold fold draw
 #define RECIPE_KATANA "ffffffffff" //fold fold fold fold fold fold fold fold fold fold (seriously)
+#define RECIPE_KANOBO "ufdp" //upset fold draw punch
 
 #define RECIPE_MACE "upu"  //upset punch upset
 #define RECIPE_AXE "udsp" //upset draw shrink punch
@@ -37,6 +38,12 @@
 #define RECIPE_GLADIUS "fdf" //fold draw fold
 #define RECIPE_SPATHA "ffdf" // fold fold draw fold
 #define RECIPE_WARHONED "udsp" //upset draw shrink punch
+
+// Armor
+#define RECIPE_ARMOR_LIGHT "uffdp" //upset fold fold draw punch
+#define RECIPE_ARMOR_MEDIUM "uffdfdp" //upset fold fold draw fold draw punch
+#define RECIPE_ARMOR_HEAVY "uffddfbffp" //upset fold fold draw draw fold bend fold fold punch
+
 
 // Logic of smithing recipes: Tools start with bend and have 3 steps. 1h weapons have 3-4 steps. 2h weapons have 4-5 steps. Bigger bladed stuff start with a fold. Pointy stuff generally start with a draw. Unusual stuff migth start with upset.
 // Point of having a structure is obviously to help remember, not just keeping every recipe as pure rote memory with no internal logic. If you add more stuff and fuck this up and don't read comments I hope you get a prolapse. - Pebbles
@@ -64,7 +71,7 @@
 	var/rng = FALSE
 	var/debug = FALSE //vv this if you want an artifact
 	var/artifactrolled = FALSE
-	var/itemqualitymax = 8
+	var/itemqualitymax = 10
 	var/list/smithrecipes = list(RECIPE_HAMMER = /obj/item/smithing/hammerhead,
 	RECIPE_SHOVEL = /obj/item/smithing/shovelhead,
 	RECIPE_PICKAXE = /obj/item/smithing/pickaxehead,
@@ -84,6 +91,10 @@
 	RECIPE_SPEAR = /obj/item/smithing/spearhead,
 	RECIPE_JAVELIN = /obj/item/smithing/javelinhead,
 	RECIPE_THROWING = /obj/item/smithing/throwingknife,
+	RECIPE_KANOBO = /obj/item/smithing/kanobostuds,
+	RECIPE_ARMOR_LIGHT = /obj/item/smithing/smith_armor_light,
+	RECIPE_ARMOR_MEDIUM = /obj/item/smithing/smith_armor_medium,
+	RECIPE_ARMOR_HEAVY = /obj/item/smithing/smith_armor_heavy
 )
 
 /obj/structure/anvil/Initialize(mapload)
@@ -205,7 +216,7 @@
 	user.visible_message("<span class='notice'>[user] works the metal on the anvil with their hammer with a loud clang!</span>", \
 						"<span class='notice'>You [stepdone] the metal with a loud clang!</span>")
 	playsound(src, 'sound/effects/clang2.ogg',40, 2)
-	do_smithing_sparks(1, TRUE, src) 
+	do_smithing_sparks(1, TRUE, src)
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/playsound, src, 'sound/effects/clang2.ogg', 40, 2), 15)
 	if(length(stepsdone) >= 3)
 		tryfinish(user)
@@ -292,7 +303,7 @@
 	name = "anvil"
 	desc = "Made from solid steel, you wont be moving this around any time soon."
 	anvilquality = 1
-	itemqualitymax = 8
+	itemqualitymax = 10
 
 // Don't make this craftable.
 /obj/structure/anvil/obtainable/legion
@@ -300,7 +311,7 @@
 	desc = "A solid steel anvil with a stamped bull on it."
 	icon_state = "legvil"
 	anvilquality = 1
-	itemqualitymax = 8
+	itemqualitymax = 10
 	anchored = TRUE
 	smithrecipes = list(RECIPE_HAMMER = /obj/item/smithing/hammerhead,
 	RECIPE_SHOVEL = /obj/item/smithing/shovelhead,
@@ -321,10 +332,15 @@
 	RECIPE_LANCE = /obj/item/smithing/lancehead,
 	RECIPE_JAVELIN = /obj/item/smithing/javelinhead,
 	RECIPE_THROWING = /obj/item/smithing/throwingknife,
+	RECIPE_KANOBO = /obj/item/smithing/kanobostuds,
+	RECIPE_ARMOR_LIGHT = /obj/item/smithing/smith_armor_light,
+	RECIPE_ARMOR_MEDIUM = /obj/item/smithing/smith_armor_medium,
+	RECIPE_ARMOR_HEAVY = /obj/item/smithing/smith_armor_heavy
 )
 
 
 // Decent makeshift anvil, can break, mobile. Gets the exclusive scrap version of the machete and 2h chopper, as well as the universal tool instead of a crowbar
+// Cannot make armor.
 /obj/structure/anvil/obtainable/table
 	name = "table anvil"
 	desc = "A reinforced table. Usable as an anvil, favored by mad wastelanders and the dregs of the wasteland. Can be loosened from its bolts and moved."
@@ -350,6 +366,7 @@
 	RECIPE_SCRAP = /obj/item/smithing/scrapblade,
 	RECIPE_JAVELIN = /obj/item/smithing/javelinhead,
 	RECIPE_THROWING = /obj/item/smithing/throwingknife,
+	RECIPE_KANOBO = /obj/item/smithing/kanobostuds
 )
 
 /obj/structure/anvil/obtainable/table/wrench_act(mob/living/user, obj/item/I)
@@ -401,7 +418,7 @@
 	custom_materials = list(/datum/material/bronze=8000)
 	icon_state = "ratvaranvil"
 	anvilquality = 1
-	itemqualitymax = 8
+	itemqualitymax = 15
 /obj/structure/anvil/obtainable/ratvar/attackby(obj/item/I, mob/user)
 	if(is_servant_of_ratvar(user))
 		return ..()
@@ -415,7 +432,7 @@
 	icon = 'icons/obj/smith.dmi'
 	icon_state = "evil"
 	anvilquality = 1
-	itemqualitymax = 8
+	itemqualitymax = 15
 
 /obj/structure/anvil/obtainable/narsie/attackby(obj/item/I, mob/user)
 	if(iscultist(user))

@@ -141,7 +141,7 @@ Unless you know what you're doing, only use the first three numbers. They're in 
 	name = "titanium"
 	desc = "Titanium"
 	color = "#b3c0c7"
-	strength_modifier = 1.1
+	strength_modifier = 1.15
 	categories = list(MAT_CATEGORY_ORE = TRUE, MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE)
 	sheet_type = /obj/item/stack/sheet/mineral/titanium
 	value_per_unit = 0.0625
@@ -222,6 +222,7 @@ Unless you know what you're doing, only use the first three numbers. They're in 
 	color = "#f2d5d7"
 	categories = list(MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE)
 	sheet_type = /obj/item/stack/sheet/mineral/mythril
+	strength_modifier = 1.5
 	value_per_unit = 0.75
 	beauty_modifier = 0.5
 	armor_modifiers = list("melee" = 2, "bullet" = 2, "laser" = 2, "energy" = 2, "bomb" = 2, "bio" = 2, "rad" = 2, "fire" = 2, "acid" = 2)
@@ -283,7 +284,7 @@ Unless you know what you're doing, only use the first three numbers. They're in 
 	desc = "Mir'ntrath barhah Nar'sie."
 	color = "#3C3434"
 	categories = list(MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE)
-	strength_modifier = 1.2
+	strength_modifier = 1.5
 	sheet_type = /obj/item/stack/sheet/runed_metal
 	value_per_unit = 0.75
 	armor_modifiers = list("melee" = 1.2, "bullet" = 1.2, "laser" = 1, "energy" = 1, "bomb" = 1.2, "bio" = 1.2, "rad" = 1.5, "fire" = 1.5, "acid" = 1.5)
@@ -295,7 +296,7 @@ Unless you know what you're doing, only use the first three numbers. They're in 
 	desc = "Tybel gb-Ratvar"
 	color = "#917010"
 	categories = list(MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE)
-	strength_modifier = 1.3 // Replicant Alloy is very good for skull beatings..
+	strength_modifier = 1.5 // Replicant Alloy is very good for skull beatings..
 	sheet_type = /obj/item/stack/tile/brass
 	value_per_unit = 0.75
 	armor_modifiers = list("melee" = 1.4, "bullet" = 1.4, "laser" = 0, "energy" = 0, "bomb" = 1.4, "bio" = 1.2, "rad" = 1.5, "fire" = 1.5, "acid" = 1.5) //But it has.. a few problems that can't easily be compensated for.
@@ -305,11 +306,11 @@ Unless you know what you're doing, only use the first three numbers. They're in 
 	name = "bronze"
 	desc = "Clock Cult? Never heard of it."
 	color = "#92661A"
-	strength_modifier = 1.1
+	strength_modifier = 0.90
 	categories = list(MAT_CATEGORY_RIGID = TRUE, MAT_CATEGORY_BASE_RECIPES = TRUE)
 	sheet_type = /obj/item/stack/sheet/bronze
 	value_per_unit = 0.025
-	armor_modifiers = list("melee" = 1, "bullet" = 1, "laser" = 1, "energy" = 1, "bomb" = 1, "bio" = 1, "rad" = 1.5, "fire" = 1.5, "acid" = 1.5)
+	armor_modifiers = list("melee" = 0.9, "bullet" = 0.9, "laser" = 0.1, "energy" = 0.1, "bomb" = 0.9, "bio" = 0.9, "rad" = 0.8, "fire" = 0.5, "acid" = 0.8)
 	beauty_modifier = 0.2
 
 /datum/material/paper

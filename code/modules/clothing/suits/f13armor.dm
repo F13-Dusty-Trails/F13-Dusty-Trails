@@ -1195,3 +1195,57 @@
 	mob_overlay_icon = 'icons/fallout/onmob/clothes/armor_heavy.dmi'
 	icon_state = "western_wayfarer_armor_heavy"
 	item_state = "western_wayfarer_armor_heavy"
+
+///////////////////
+// SMITHED ARMOR //
+///////////////////
+// material_flags = MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS // It does, but this is assigned elsewhere.
+// Quality of smithed armor adds a maximum total of +10 to M/B/L/E/B. Other armor types are not affected.
+// Material type caps at a maximum effective bonus of 1.5/1.3 for Saturnite (45 melee/bullet and 39 laser/energy).
+// This can be further enhanced with plating to cap at 55 melee/bullet and 49 laser.
+// By comparison, masterwork heavy armor made of saturnite still has less overall protection than the basic combat -
+// duster until plated and even once plated has worse bomb armor and slows you x3 as much.
+// Other materials barely beat out equal category armor, but have more rounded protection.
+// In particular, faction armor (khan, legion, and BoS in particular) are much stronger either on round start or after -
+// being plated even when compared to the highest tier armor available for smithing using rare materials and lots of crafting. -Possum
+/obj/item/clothing/suit/armored/light/smith_armor_light
+	name = "light armor" // Name gains quality and material as a prefix.
+	desc = "A set of newly forged light-weight plates padded with leather to be more comfortable."
+	icon_state = "smithed_armor_light"
+	item_state = "smithed_armor_light"
+	armor = list("melee" = 5, "bullet" = 5, "laser" = 5, "energy" = 5, "bomb" = 5, "bio" = 0, "rad" = 30, "fire" = 0, "acid" = 5, "wound" = 10)
+	// Slowdown = 0.05 | Light armor standard.
+	mutantrace_variation = STYLE_DIGITIGRADE
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+
+/obj/item/clothing/suit/armored/light/smith_armor_light/Initialize(mapload) // TO GO EVEN FURTHER BYOND!!!
+	. = ..()
+	AddComponent(/datum/component/armor_plate)
+
+/obj/item/clothing/suit/armored/medium/smith_armor_medium
+	name = "medium armor"
+	desc = "A set of newly forged medium plates padded with leather to be more comfortable."
+	icon_state = "smithed_armor_medium"
+	item_state = "smithed_armor_medium"
+	armor = list("melee" = 15, "bullet" = 15, "laser" = 15, "energy" = 15, "bomb" = 15, "bio" = 0, "rad" = 30, "fire" = 10, "acid" = 10, "wound" = 20)
+	// Slowdown = 0.10 | Medium armor Standard
+	mutantrace_variation = STYLE_DIGITIGRADE
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+
+/obj/item/clothing/suit/armored/medium/smith_armor_medium/Initialize(mapload) // TO GO EVEN FURTHER BYOND!!!
+	. = ..()
+	AddComponent(/datum/component/armor_plate)
+
+/obj/item/clothing/suit/armored/heavy/smith_armor_heavy
+	name = "heavy armor"
+	desc = "A set of newly forged heavy plates padded with leather to be more comfortable."
+	icon_state = "smith_armor_heavy"
+	item_state = "smith_armor_heavy"
+	armor = list("melee" = 20, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 20, "bio" = 10, "rad" = 35, "fire" = 20, "acid" = 20, "wound" = 25)
+	// Slowdown = 0.15 | Heavy armor standard
+	mutantrace_variation = STYLE_DIGITIGRADE
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+
+/obj/item/clothing/suit/armored/heavy/smith_armor_heavy/Initialize(mapload) // TO GO EVEN FURTHER BYOND!!!
+	. = ..()
+	AddComponent(/datum/component/armor_plate)

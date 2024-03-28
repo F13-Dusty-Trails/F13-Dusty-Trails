@@ -64,7 +64,7 @@
 	item_state = "knife"
 	flags_1 = CONDUCT_1
 	force = 15
-	w_class = WEIGHT_CLASS_SMALL
+	w_class = WEIGHT_CLASS_TINY // Matches smithed daggers and can be shoved into boots. If you care more about butchering than a backup blade.
 	throwforce = 15
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	throw_speed = 3
